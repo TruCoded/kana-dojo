@@ -11,14 +11,14 @@ Both progress and stars are **derived mathematically** from the same stored coun
 | Constant | Location | Value | Purpose |
 |---|---|---|---|---|
 | `MAX_STARS_PER_SET` | `features/Progress/lib/setProgress.ts:1` | 3 | Max stars per level |
-| `KANJI_SET_PROGRESS_TARGET` | `features/Progress/lib/setProgress.ts:3` | 25 | Correct answers to master one kanji character |
-| `KANJI_SET_PROGRESS_CAP` | `features/Progress/lib/setProgress.ts:9` | 25 × 3 = 75 | Stored counter cap (target × max stars) |
-| `VOCAB_MEANING_PROGRESS_TARGET` | `features/Progress/lib/setProgress.ts:4` | 25 | Correct meaning answers to master one word |
-| `VOCAB_MEANING_PROGRESS_CAP` | `features/Progress/lib/setProgress.ts:11` | 25 × 3 = 75 | Stored counter cap |
-| `VOCAB_READING_PROGRESS_TARGET` | `features/Progress/lib/setProgress.ts:5` | 20 | Correct reading answers to master one word |
-| `VOCAB_READING_PROGRESS_CAP` | `features/Progress/lib/setProgress.ts:13` | 20 × 3 = 60 | Stored counter cap |
-| `KANA_ROW_MASTERY_TARGET` | `features/Kana/components/KanaCards/SubsetNew.tsx:18` | 50 | Correct answers to master one kana character |
-| `KANA_ROW_MASTERY_CAP` | `features/Kana/components/KanaCards/SubsetNew.tsx:20` | 50 × 3 = 150 | Effective display cap |
+| `KANJI_SET_PROGRESS_TARGET` | `features/Progress/lib/setProgress.ts:3` | 15 | Correct answers to master one kanji character |
+| `KANJI_SET_PROGRESS_CAP` | `features/Progress/lib/setProgress.ts:9` | 15 × 3 = 45 | Stored counter cap (target × max stars) |
+| `VOCAB_MEANING_PROGRESS_TARGET` | `features/Progress/lib/setProgress.ts:4` | 15 | Correct meaning answers to master one word |
+| `VOCAB_MEANING_PROGRESS_CAP` | `features/Progress/lib/setProgress.ts:11` | 15 × 3 = 45 | Stored counter cap |
+| `VOCAB_READING_PROGRESS_TARGET` | `features/Progress/lib/setProgress.ts:5` | 15 | Correct reading answers to master one word |
+| `VOCAB_READING_PROGRESS_CAP` | `features/Progress/lib/setProgress.ts:13` | 15 × 3 = 45 | Stored counter cap |
+| `KANA_ROW_MASTERY_TARGET` | `features/Kana/components/KanaCards/SubsetNew.tsx:18` | 35 | Correct answers to master one kana character |
+| `KANA_ROW_MASTERY_CAP` | `features/Kana/components/KanaCards/SubsetNew.tsx:20` | 35 × 3 = 105 | Effective display cap |
 
 All caps use `TARGET × MAX_STARS_PER_SET`. Changing a target value automatically adjusts the cap.
 
@@ -47,17 +47,17 @@ At MAX_STARS_PER_SET (3 stars), progress stays at 1.0 (100%).
 
 The denominator `cycleTarget = N × target` never changes — the number of correct answers needed to fill the bar once is the same regardless of stars. Stars just track how many full cycles have been completed.
 
-### Example (Kanji, 10 characters, target=25)
+### Example (Kanji, 10 characters, target=15)
 
 | Total correct earned | stars | Display progress |
 |---|---|---|
 | 0 | 0 | 0% |
-| 125 | 0 | 50% |
-| 250 | 1 | 0% (wraps, star awarded) |
-| 375 | 1 | 50% |
-| 500 | 2 | 0% (wraps, star awarded) |
-| 625 | 2 | 50% |
-| 750 | 3 | 100% (fully mastered) |
+| 75 | 0 | 50% |
+| 150 | 1 | 0% (wraps, star awarded) |
+| 225 | 1 | 50% |
+| 300 | 2 | 0% (wraps, star awarded) |
+| 375 | 2 | 50% |
+| 450 | 3 | 100% (fully mastered) |
 
 ## Storage
 
@@ -95,7 +95,7 @@ calculateKanjiSetProgressAndStars(entries) → { progress, stars }
     ↓
 LevelSetCards receives getSetProgress / getSetStars props
     ↓
-ProgressBar renders bar at `percent`% + `stars` Star icons below
+MasteryBar renders bar at `percent`% + `stars` Star icons below
 ```
 
 ### Kana
@@ -109,7 +109,7 @@ SubsetNew reads characterMastery
     ↓
 getRowProgressAndStars(rowKana) → { progress, stars }
     ↓ (inline calculation in SubsetNew)
-ProgressBar renders bar at `percent`% + `stars` Star icons below
+MasteryBar renders bar at `percent`% + `stars` Star icons below
 ```
 
 ## Functions

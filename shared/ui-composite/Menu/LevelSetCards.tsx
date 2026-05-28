@@ -16,7 +16,7 @@ import { cardBorderStyles } from '@/shared/utils/styles';
 import useGridColumns from '@/shared/hooks/generic/useGridColumns';
 import { useClick } from '@/shared/hooks/generic/useAudio';
 import { ActionButton } from '@/shared/ui/components/ActionButton';
-import ProgressBar from '@/shared/ui/components/ProgressBar';
+import MasteryBar from '@/shared/ui/components/MasteryBar';
 import QuickSelectModal from '@/shared/ui-composite/Modals/QuickSelectModal';
 import { cn } from '@/shared/utils/utils';
 
@@ -208,7 +208,7 @@ const VisibleRowsSection = <TItem,>({
                       i < rowSets.length - 1 && 'md:border-r-1',
                     )}
                   >
-                    <ProgressBar
+                    <MasteryBar
                       percent={progressPercent}
                       stars={
                         process.env.NODE_ENV === 'development' &&

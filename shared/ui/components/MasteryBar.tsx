@@ -5,7 +5,7 @@ import { Star } from 'lucide-react';
 
 import { cn } from '@/shared/utils/utils';
 
-type ProgressBarProps = {
+type MasteryBarProps = {
   percent: number;
   stars?: number;
   className?: string;
@@ -13,13 +13,13 @@ type ProgressBarProps = {
   rounded?: string;
 };
 
-const ProgressBar = ({
+const MasteryBar = ({
   percent,
   stars = 0,
   className,
   height = 'h-9',
   rounded = 'rounded-2xl',
-}: ProgressBarProps) => (
+}: MasteryBarProps) => (
   <div className={cn('w-full', className)}>
     <div
       className={cn(
@@ -57,4 +57,4 @@ const ProgressBar = ({
   </div>
 );
 
-export default ProgressBar;
+export default MasteryBar;

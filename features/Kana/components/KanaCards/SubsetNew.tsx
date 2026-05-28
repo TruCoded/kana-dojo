@@ -7,7 +7,7 @@ import useKanaStore from '@/features/Kana/store/useKanaStore';
 import useStatsStore from '@/features/Progress/store/useStatsStore';
 import { useClick } from '@/shared/hooks/generic/useAudio';
 import { ActionButton } from '@/shared/ui/components/ActionButton';
-import ProgressBar from '@/shared/ui/components/ProgressBar';
+import MasteryBar from '@/shared/ui/components/MasteryBar';
 import { cn } from '@/shared/utils/utils';
 
 /**
@@ -118,7 +118,7 @@ const SubsetNew = ({ sliceRange, subgroup }: SubsetProps) => {
               !isLastInSubset && 'border-b border-(--border-color)',
             )}
           >
-            <ProgressBar
+            <MasteryBar
               percent={progressPercent}
               stars={stars}
               height='h-7'
