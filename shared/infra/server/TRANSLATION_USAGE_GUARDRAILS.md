@@ -19,6 +19,8 @@ The goal is to keep normal learner behavior frictionless while making scripted a
 ## Operational notes
 
 - Cached translations do not consume character budget.
+- Uncached translations use Azure Translator first and Google Cloud Translation only as a fallback.
+- Azure requires `AZURE_TRANSLATOR_KEY`; `AZURE_TRANSLATOR_ENDPOINT` and `AZURE_TRANSLATOR_REGION` are optional for custom or regional resources.
 - Verification thresholds are intentionally higher than ordinary learner behavior.
 - Redis is preferred in production; the in-memory fallback is best-effort only.
 - The healthcheck route exposes translation usage stats for monitoring.
